@@ -28,7 +28,8 @@ const App = () => {
                 display: 'flex', 
                 flexDirection: 'column', 
                 alignItems: 'center', 
-                justifyContent: 'center'
+                justifyContent: 'center',
+                transition: 'background-color 0.3s linear'
             }}>
             <h1>Welcome to Game Shelf!</h1>
             <p>Find the best deals on your favorite games!</p>

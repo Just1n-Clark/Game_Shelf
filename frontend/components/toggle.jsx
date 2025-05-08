@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Switch from '@mui/material/Switch';
 
 const Toggle = ({ onChange }) => {
     const [isChecked, setIsChecked] = useState(false);
@@ -10,9 +11,10 @@ const Toggle = ({ onChange }) => {
 
     return (
         <div>
-            <button onClick={handleToggle}>
-                {isChecked ? 'ON' : 'OFF'}
-            </button>
+            <Switch
+                checked={isChecked}
+                onChange={handleToggle}
+            />
         </div>
     );
 }

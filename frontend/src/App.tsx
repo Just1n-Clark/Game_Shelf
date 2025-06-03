@@ -1,44 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import Toggle from '../components/Toggle';
+import { Routes, Route } from 'react-router-dom';
+
+import Layout from './components/layout';
+import Home from './pages/Home';
+import About from './pages/About';
+import Settings from './pages/Settings';
+import Search from './pages/Search';
+import Library from './pages/Library';
+import NotFound from './pages/NotFound';
 
 import './App.css';
 
 const App = () => {
-
-    const [darkMode, setDarkMode] = useState(false);
-    const [bgColor, setBgColor] = useState('white');
-    const [textColor, setTextColor] = useState('black');
-
-    const handleToggle = () => {
-        setDarkMode(!darkMode);
-        setBgColor(darkMode ? 'white' : 'black');
-        setTextColor(darkMode ? 'black' : 'white');
-    }
-
-    useEffect(() => {
-        console.log('Dark mode is ' + (darkMode ? 'on' : 'off'));
-    }, [darkMode]);
-
     return (
-        <div
-            style={{
-                backgroundColor: bgColor, 
-                color: textColor,
-                height: '100vh', 
-                display: 'flex', 
-                flexDirection: 'column', 
-                alignItems: 'center', 
-                justifyContent: 'center',
-                transition: 'background-color 0.3s linear'
-            }}>
-            <h1>Welcome to Game Shelf!</h1>
-            <p>Find the best deals on your favorite games!</p>
-
-            <p>Dark Mode</p>
-            <Toggle onChange={handleToggle} />
-            
-            <p>This site uses <a href='https://apidocs.cheapshark.com'>CheapSharkAPI</a></p>
-        </div>
+        <Routes>
+            <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path='about' element={<About />} />
+                <Route path='settings' element={<Settings />} />
+                <Route path="search" element={<Search />} />
+                <Route path='library' element={<Library />} />
+                <Route path='*' element={<NotFound />} />
+            </Route>
+        </Routes>
     )
 }
 
